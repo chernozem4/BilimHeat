@@ -1,7 +1,6 @@
 from typing import List, Optional
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from fastapi import HTTPException, status
 
 from models.school import School
 from schemas.school import SchoolCreate, SchoolRead

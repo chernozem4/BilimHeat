@@ -29,7 +29,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -
 async def get_current_user(token: str = Depends(oauth2_scheme), db: AsyncSession = Depends(get_db)) -> UserRead:
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Не удалось проверить подлинность пользователя",
+        detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
@@ -48,7 +48,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: AsyncSession
 
 async def get_current_active_user(current_user: UserRead = Depends(get_current_user)) -> UserRead:
     if not current_user.is_active:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Пользователь не активен")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Inactive user")
     return current_user
 
 async def authenticate_user(username: str, password: str, db: AsyncSession) -> Optional[UserRead]:
