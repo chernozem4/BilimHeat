@@ -12,13 +12,14 @@ class ReportsService:
         result = await self.db.execute(Demography.__table__.select())
         rows = result.fetchall()
         if not rows:
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Нет данных для экспорта")
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No data to export")
 
         output = StringIO()
         writer = csv.writer(output)
         writer.writerow(Demography.__table__.columns.keys())
         for row in rows:
             writer.writerow(row)
+
         csv_content = output.getvalue()
         output.close()
         return csv_content

@@ -12,6 +12,3 @@ class Forecast(Base):
     forecast_school = Column(Integer, nullable=False)
 
     district = relationship("District", back_populates="forecasts")
-
-    def __repr__(self):
-        return f"<Forecast(id={self.id}, district_id={self.district_id}, year={self.year})>"

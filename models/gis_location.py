@@ -10,7 +10,5 @@ class GISLocation(Base):
     address = Column(String(300), nullable=True)
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
-    type = Column(String(50), nullable=True)  # тип объекта
+    type = Column(String(50), nullable=True)  # например, школа, детсад
 
-    def __repr__(self):
-        return f"<GISLocation(id={self.id}, name={self.name}, type={self.type})>"

@@ -11,5 +11,3 @@ class User(Base):
     is_active = Column(Boolean, default=True)
     role = Column(String(20), default="user")
 
-    def __repr__(self):
-        return f"<User(id={self.id}, username={self.username}, role={self.role})>"

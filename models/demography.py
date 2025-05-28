@@ -13,7 +13,3 @@ class Demography(Base):
     children_7_17 = Column(Integer, nullable=False)
 
     district = relationship("District", back_populates="demography_records")
-
-    def __repr__(self):
-        return (f"<Demography(id={self.id}, district_id={self.district_id}, year={self.year})>")
-

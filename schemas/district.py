@@ -1,8 +1,9 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class DistrictBase(BaseModel):
     name: str
-    gis_id: str | None = None
+    gis_id: Optional[str] = None
 
 class DistrictCreate(DistrictBase):
     pass

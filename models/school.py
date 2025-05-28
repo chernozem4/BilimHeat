@@ -11,6 +11,3 @@ class School(Base):
     capacity = Column(Integer, nullable=False)
 
     district = relationship("District", back_populates="schools")
-
-    def __repr__(self):
-        return f"<School(id={self.id}, name={self.name})>"
